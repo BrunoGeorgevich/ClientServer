@@ -92,3 +92,7 @@ $RECYCLE.BIN/
 *.exe
 *.out
 *.app
+
+#Dependencies
+*brunocppessencials*
+*brunocompoenents*

@@ -2,5 +2,5 @@
 
 Friend::Friend(QByteArray n, QByteArray id, QObject *parent)
 {
-    m_name=n; m_id=id;
+    m_name=n; m_fid=id;
 }

@@ -11,7 +11,7 @@ class Friend : public QObject
 {
     Q_OBJECT
     QML_WRITABLE_PROPERTY(QByteArray,name)
-    QML_WRITABLE_PROPERTY(QByteArray,id)
+    QML_WRITABLE_PROPERTY(QByteArray,fid)
 public:
     explicit Friend(QByteArray n="Default", QByteArray id="-1", QObject *parent = 0);
 };

@@ -22,7 +22,7 @@ class Client : public QObject
     Q_OBJECT
     QML_OBJMODEL_PROPERTY(Friend,friends)
     QML_READONLY_PROPERTY(QByteArray,name)
-    QML_READONLY_PROPERTY(QByteArray,id)
+    QML_READONLY_PROPERTY(QByteArray,fid)
 public:
     explicit Client(QByteArray name, QObject *parent = 0);
 public slots:

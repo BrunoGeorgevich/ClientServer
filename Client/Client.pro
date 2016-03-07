@@ -12,7 +12,7 @@ SOURCES += main.cpp \
 
 HEADERS += \
     client.h \
-    ../brunocppessencials\qqmlobjectlistmodel.h \
+    ../brunocppessencials/qqmlobjectlistmodel.h \
     friend.h
 
 RESOURCES += \
