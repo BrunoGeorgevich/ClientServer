@@ -11,6 +11,6 @@ Folder Structure:<br>
 <li>brunocppessencials</li>
 <li>brunocomponents</li>
 <li>Client</li>
-<li><Server</li>
+<li>Server</li>
 </ul>
 </ul>
