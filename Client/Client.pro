@@ -8,13 +8,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     client.cpp \
-    friend.cpp
+    friend.cpp \
+    message.cpp
 
 HEADERS += \
     client.h \
     ../brunocppessencials/qqmlobjectlistmodel.h \
-    friend.h
+    friend.h \
+    message.h
 
 RESOURCES += \
-    qml.qrc
+    qml.qrc \
+    ../brunocomponents/components.qrc \
+    assets/assets.qrc
 

@@ -23,6 +23,7 @@ public slots:
 private:
     QByteArray clientsToJson();
     void notifyAllClients();
+    void newMessageSend(QJsonObject message);
     QNetworkSession *m_session;
     QTcpServer *m_server;
 };

@@ -5,7 +5,7 @@ Server::Server(QObject *parent) : QObject(parent)
     m_session = new QNetworkSession(QNetworkConfiguration(),this);
     m_server = new QTcpServer(this);
     m_clients = new QQmlObjectListModel<Client>();
-    if(!m_server->listen(QHostAddress("192.168.1.110"),55443)) qFatal("Unable to start the server: %1.");
+    if(!m_server->listen(QHostAddress::AnyIPv4,55443)) qFatal("Unable to start the server: %1.");
     QString ipAddress;
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
     for (int i = 0; i < ipAddressesList.size(); ++i) {
@@ -53,13 +53,13 @@ void Server::onDisconnection()
 void Server::onReady(QJsonObject obj)
 {
     QByteArray op = obj["op"].toString().toLatin1();
-    if(op=="Register") {
+    if(op=="register") {
         Client *c = static_cast<Client*>(sender());
         c->set_name(obj["name"].toString().toLatin1());
-        c->set_id(obj["id"].toString().toLatin1());
+        c->set_cid(obj["id"].toString().toLatin1());
         notifyAllClients();
-    } else if(op=="Message") {
-
+    } else if(op=="message") {
+        newMessageSend(obj);
     }
 }
 
@@ -71,7 +71,7 @@ QByteArray Server::clientsToJson()
     for(int i=0;i<m_clients->size();i++) {
         QJsonObject client;
         client.insert("name",QString(m_clients->at(i)->get_name()));
-        client.insert("id",QString(m_clients->at(i)->get_id()));
+        client.insert("id",QString(m_clients->at(i)->get_cid()));
         clients.append(client);
     }
     mainObj.insert("clients",clients);
@@ -84,5 +84,14 @@ void Server::notifyAllClients()
     for(int i=0;i<m_clients->size();i++) {
         Client *client = m_clients->at(i);
         client->get_socket()->write(clientsToJson());
+    }
+}
+
+void Server::newMessageSend(QJsonObject message)
+{
+    QJsonDocument doc(message);
+    for(int i=0;i<m_clients->size();i++) {
+        Client *client = m_clients->at(i);
+        client->get_socket()->write(doc.toJson());
     }
 }

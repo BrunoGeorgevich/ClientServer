@@ -3,7 +3,7 @@
 Client::Client(QTcpSocket *socket, QByteArray name, QByteArray id, QObject *parent)
     : QObject(parent)
 {
-    m_socket=socket;m_name=name; m_id=id;
+    m_socket=socket;m_name=name; m_cid=id;
     connect(m_socket,SIGNAL(readyRead()),
             this,SLOT(onReadyRead()));
     connect(m_socket,SIGNAL(disconnected()),

@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Client *c = new Client("Bruno");
+    Client *c = new Client("Livia");
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("_client",c);
     engine.load(QUrl("qrc:/main.qml"));

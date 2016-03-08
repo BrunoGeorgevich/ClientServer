@@ -13,7 +13,7 @@ class Client : public QObject
     Q_OBJECT
     QML_WRITABLE_PROPERTY(QTcpSocket*,socket)
     QML_WRITABLE_PROPERTY(QByteArray,name)
-    QML_WRITABLE_PROPERTY(QByteArray,id)
+    QML_WRITABLE_PROPERTY(QByteArray,cid)
 public:
     explicit Client(
             QTcpSocket *socket=Q_NULLPTR,
